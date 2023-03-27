@@ -1,15 +1,15 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# used by the Makefile
+/build/_workspace/
+/build/cache/
+/build/bin/
+/geth*.zip
 
-# Test binary, built with `go test -c`
-*.test
+# travis
+profile.tmp
+profile.cov
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# IdeaIDE
+.idea
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# VS Code
+.vscode
