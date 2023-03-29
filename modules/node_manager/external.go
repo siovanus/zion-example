@@ -22,7 +22,6 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/hotstuff/backend"
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/core/state"
 	"github.com/ethereum/go-ethereum/params"
@@ -44,11 +43,6 @@ var (
 	MaxStakeRate     Dec = NewDecFromBigInt(new(big.Int).SetUint64(6)) // user stake can not more than 5 times of self stake
 	MinBlockPerEpoch     = new(big.Int).SetUint64(10000)
 )
-
-func init() {
-	core.RegGenesis = SetupGenesis
-	backend.GetGovernanceInfo = GetGovernanceInfo
-}
 
 func GetGovernanceInfo(db *state.StateDB) (*params.EpochInfoConfig, error) {
 	epochInfo, err := GetCurrentEpochInfoFromDB(db)

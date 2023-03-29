@@ -19,6 +19,8 @@
 package boot
 
 import (
+	"github.com/ethereum/go-ethereum/consensus/hotstuff/backend"
+	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/polynetwork/zion-example/modules/cfg"
@@ -41,6 +43,10 @@ func InitModuleContracts() {
 
 	//set coinbase address to recieve accumulated gas fee
 	params.CoinBaseAddress = cfg.NodeManagerContractAddress
+	//set genesis state of module contract
+	core.RegGenesis = node_manager.SetupGenesis
+	//set get validator method for consensus
+	backend.GetGovernanceInfo = node_manager.GetGovernanceInfo
 
 	//if these module have system tx, they will be executed at this order
 	economic.InitEconomic()
