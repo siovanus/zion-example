@@ -48,7 +48,7 @@ func InitModuleContracts() {
 	//set get validator method for consensus
 	backend.GetGovernanceInfo = node_manager.GetGovernanceInfo
 
-	//if these module have system tx, they will be executed at this order
+	//if these module have system tx, they will be executed at this order each end of the block
 	economic.InitEconomic()
 	node_manager.InitNodeManager()
 	info_sync.InitInfoSync()

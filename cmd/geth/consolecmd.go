@@ -1,3 +1,19 @@
+// Copyright 2019 The go-ethereum Authors
+// This file is part of go-ethereum.
+//
+// go-ethereum is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// go-ethereum is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+
 package main
 
 import (
@@ -6,10 +22,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/ethereum/go-ethereum/cmd/geth/sub"
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/console"
 	"github.com/ethereum/go-ethereum/node"
 	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/polynetwork/zion-example/modules/boot"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -59,9 +77,9 @@ JavaScript API. See https://geth.ethereum.org/docs/interface/javascript-console`
 // same time.
 func localConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
-	prepare(ctx)
-	stack, backend := makeFullNode(ctx)
-	startNode(ctx, stack, backend)
+	sub.Prepare(ctx)
+	stack, backend := sub.MakeFullNode(ctx, boot.InitModuleContracts)
+	sub.StartNode(ctx, stack, backend)
 	defer stack.Close()
 
 	// Attach to the newly started node and start the JavaScript console
@@ -158,7 +176,7 @@ func remoteConsole(ctx *cli.Context) error {
 // for "geth attach" with no argument.
 func dialRPC(endpoint string) (*rpc.Client, error) {
 	if endpoint == "" {
-		endpoint = node.DefaultIPCEndpoint(clientIdentifier)
+		endpoint = node.DefaultIPCEndpoint(sub.ClientIdentifier)
 	} else if strings.HasPrefix(endpoint, "rpc:") || strings.HasPrefix(endpoint, "ipc:") {
 		// Backwards compatibility with geth < 1.5 which required
 		// these prefixes.
@@ -172,8 +190,8 @@ func dialRPC(endpoint string) (*rpc.Client, error) {
 // everything down.
 func ephemeralConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
-	stack, backend := makeFullNode(ctx)
-	startNode(ctx, stack, backend)
+	stack, backend := sub.MakeFullNode(ctx, boot.InitModuleContracts)
+	sub.StartNode(ctx, stack, backend)
 	defer stack.Close()
 
 	// Attach to the newly started node and start the JavaScript console

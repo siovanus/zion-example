@@ -3,13 +3,18 @@ module github.com/polynetwork/zion-example
 go 1.20
 
 require (
+	github.com/aws/aws-sdk-go-v2 v1.2.0
+	github.com/aws/aws-sdk-go-v2/config v1.1.1
+	github.com/aws/aws-sdk-go-v2/credentials v1.1.1
+	github.com/aws/aws-sdk-go-v2/service/route53 v1.1.1
 	github.com/cespare/cp v0.1.0
+	github.com/cloudflare/cloudflare-go v0.14.0
+	github.com/davecgh/go-spew v1.1.1
 	github.com/ethereum/go-ethereum v1.11.5
-	github.com/jedisct1/go-minisign v0.0.0-20190909160543-45766022959e
-	github.com/naoina/toml v0.1.2-0.20170918210437-9fafd6967416
 	github.com/polynetwork/ripple-sdk v0.0.0-20220616022641-d64d4aa053fe
 	github.com/rubblelabs/ripple v0.0.0-20220222071018-38c1a8b14c18
 	github.com/stretchr/testify v1.7.0
+	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
 	gopkg.in/urfave/cli.v1 v1.20.0
 )
 
@@ -18,12 +23,17 @@ require (
 	github.com/Azure/azure-storage-blob-go v0.7.0 // indirect
 	github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6 // indirect
 	github.com/VictoriaMetrics/fastcache v1.6.0 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.0.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.0.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.1.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sts v1.1.1 // indirect
+	github.com/aws/smithy-go v1.1.0 // indirect
 	github.com/bits-and-blooms/bitset v1.2.1 // indirect
 	github.com/btcsuite/btcd v0.22.0-beta // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v0.0.0-20180603214616-504e848d77ea // indirect
 	github.com/dlclark/regexp2 v1.4.1-0.20201116162257-a2a8dda75c91 // indirect
+	github.com/docker/docker v1.4.2-0.20180625184442-8e610b2b55bf // indirect
 	github.com/dop251/goja v0.0.0-20211011172007-d99e4b8cbf48 // indirect
 	github.com/edsrzf/mmap-go v1.0.0 // indirect
 	github.com/fatih/color v1.13.0 // indirect
@@ -44,12 +54,15 @@ require (
 	github.com/huin/goupnp v1.0.2 // indirect
 	github.com/influxdata/influxdb v1.8.3 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2-0.20160603034137-1fa385a6f458 // indirect
+	github.com/jedisct1/go-minisign v0.0.0-20190909160543-45766022959e // indirect
+	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/karalabe/usb v0.0.2 // indirect
 	github.com/mattn/go-colorable v0.1.9 // indirect
 	github.com/mattn/go-ieproxy v0.0.0-20190702010315-6dee0af9227d // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/naoina/go-stringutil v0.1.0 // indirect
+	github.com/naoina/toml v0.1.2-0.20170918210437-9fafd6967416 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
 	github.com/peterh/liner v1.1.1-0.20190123174540-a2c9a5303de7 // indirect
@@ -64,7 +77,6 @@ require (
 	github.com/tklauser/go-sysconf v0.3.5 // indirect
 	github.com/tklauser/numcpus v0.2.2 // indirect
 	github.com/tyler-smith/go-bip39 v1.0.2 // indirect
-	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871 // indirect
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20210903071746-97244b99971b // indirect
