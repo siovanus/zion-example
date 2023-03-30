@@ -32,6 +32,11 @@ import (
 	"github.com/polynetwork/zion-example/modules/side_chain_manager"
 )
 
+func init() {
+	//set genesis state of module contract when init genesis
+	core.RegGenesis = node_manager.SetupGenesis
+}
+
 func InitModuleContracts() {
 	//register module contract address map
 	params.RegisterModuleContractAddrMap(cfg.ModuleNodeManager, cfg.NodeManagerContractAddress)
@@ -43,8 +48,6 @@ func InitModuleContracts() {
 
 	//set coinbase address to recieve accumulated gas fee
 	params.CoinBaseAddress = cfg.NodeManagerContractAddress
-	//set genesis state of module contract
-	core.RegGenesis = node_manager.SetupGenesis
 	//set get validator method for consensus
 	backend.GetGovernanceInfo = node_manager.GetGovernanceInfo
 
