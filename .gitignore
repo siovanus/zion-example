@@ -4,6 +4,9 @@
 /build/bin/
 /geth*.zip
 
+.DS_Store
+**/.DS_Store
+
 # travis
 profile.tmp
 profile.cov
