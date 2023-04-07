@@ -59,6 +59,8 @@ func InitSideChainManager() {
 }
 
 func RegisterSideChainManagerContract(s *contract.ModuleContract) {
+	s.Prepare(ABI)
+
 	// s.Register(MethodContractName, Name)
 	s.Register(side_chain_manager_abi.MethodGetSideChain, GetSideChain)
 	s.Register(side_chain_manager_abi.MethodRegisterSideChain, RegisterSideChain)

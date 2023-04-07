@@ -47,6 +47,8 @@ func InitCrossChainManager() {
 }
 
 func RegisterCrossChainManagerContract(s *contract.ModuleContract) {
+	s.Prepare(common.ABI)
+
 	s.Register(common.MethodContractName, Name)
 	s.Register(common.MethodImportOuterTransfer, ImportOuterTransfer)
 	s.Register(common.MethodBlackChain, BlackChain)

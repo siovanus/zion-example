@@ -47,6 +47,8 @@ func InitProposalManager() {
 }
 
 func RegisterProposalManagerContract(s *contract.ModuleContract) {
+	s.Prepare(ABI)
+
 	s.Register(MethodPropose, Propose)
 	s.Register(MethodProposeConfig, ProposeConfig)
 	s.Register(MethodProposeCommunity, ProposeCommunity)

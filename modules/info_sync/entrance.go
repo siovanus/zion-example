@@ -39,6 +39,8 @@ func InitInfoSync() {
 }
 
 func RegisterInfoSyncContract(s *contract.ModuleContract) {
+	s.Prepare(ABI)
+
 	s.Register(MethodContractName, Name)
 	s.Register(MethodSyncRootInfo, SyncRootInfo)
 	s.Register(MethodReplenish, Replenish)

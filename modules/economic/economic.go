@@ -42,6 +42,8 @@ func InitEconomic() {
 }
 
 func RegisterEconomicContract(s *contract.ModuleContract) {
+	s.Prepare(ABI)
+
 	s.Register(MethodName, Name)
 	s.Register(MethodTotalSupply, TotalSupply)
 }

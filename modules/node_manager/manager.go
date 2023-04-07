@@ -56,6 +56,8 @@ func InitNodeManager() {
 }
 
 func RegisterNodeManagerContract(s *contract.ModuleContract) {
+	s.Prepare(ABI)
+
 	s.Register(MethodCreateValidator, CreateValidator)
 	s.Register(MethodUpdateValidator, UpdateValidator)
 	s.Register(MethodUpdateCommission, UpdateCommission)
