@@ -33,11 +33,6 @@ import (
 )
 
 func init() {
-	//set genesis state of module contract when init genesis
-	core.RegGenesis = node_manager.SetupGenesis
-}
-
-func InitModuleContracts() {
 	//register module contract address map
 	params.RegisterModuleContractAddrMap(cfg.ModuleNodeManager, cfg.NodeManagerContractAddress)
 	params.RegisterModuleContractAddrMap(cfg.ModuleEconomic, cfg.EconomicContractAddress)
@@ -46,11 +41,15 @@ func InitModuleContracts() {
 	params.RegisterModuleContractAddrMap(cfg.ModuleSideChainManager, cfg.SideChainManagerContractAddress)
 	params.RegisterModuleContractAddrMap(cfg.ModuleProposalManager, cfg.ProposalManagerContractAddress)
 
+	//set genesis state of module contract when init genesis
+	core.RegGenesis = node_manager.SetupGenesis
 	//set coinbase address to recieve accumulated gas fee
 	params.CoinBaseAddress = cfg.NodeManagerContractAddress
 	//set get validator method for consensus
 	backend.GetGovernanceInfo = node_manager.GetGovernanceInfo
+}
 
+func InitModuleContracts() {
 	//if these module have system tx, they will be executed at this order each end of the block
 	economic.InitEconomic()
 	node_manager.InitNodeManager()
